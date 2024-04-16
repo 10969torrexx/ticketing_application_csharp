@@ -1,0 +1,12 @@
+D:\10969torrexx\Visual Studio Projects\ticketing_application\ticketing_application\bin\Debug\ticketing_application.exe.config
+D:\10969torrexx\Visual Studio Projects\ticketing_application\ticketing_application\bin\Debug\ticketing_application.exe
+D:\10969torrexx\Visual Studio Projects\ticketing_application\ticketing_application\bin\Debug\ticketing_application.pdb
+D:\10969torrexx\Visual Studio Projects\ticketing_application\ticketing_application\obj\Debug\ticketing_application.csprojResolveAssemblyReference.cache
+D:\10969torrexx\Visual Studio Projects\ticketing_application\ticketing_application\obj\Debug\ticketing_application.exe
+D:\10969torrexx\Visual Studio Projects\ticketing_application\ticketing_application\obj\Debug\ticketing_application.pdb
+D:\10969torrexx\Visual Studio Projects\GIthub\ticketing_application_csharp\ticketing_application\ticketing_application\bin\Debug\ticketing_application.exe.config
+D:\10969torrexx\Visual Studio Projects\GIthub\ticketing_application_csharp\ticketing_application\ticketing_application\obj\Debug\ticketing_application.exe
+D:\10969torrexx\Visual Studio Projects\GIthub\ticketing_application_csharp\ticketing_application\ticketing_application\obj\Debug\ticketing_application.pdb
+D:\10969torrexx\Visual Studio Projects\GIthub\ticketing_application_csharp\ticketing_application\ticketing_application\bin\Debug\ticketing_application.exe
+D:\10969torrexx\Visual Studio Projects\GIthub\ticketing_application_csharp\ticketing_application\ticketing_application\bin\Debug\ticketing_application.pdb
+D:\10969torrexx\Visual Studio Projects\GIthub\ticketing_application_csharp\ticketing_application\ticketing_application\obj\Debug\ticketing_application.csprojResolveAssemblyReference.cache
