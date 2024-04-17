@@ -941,25 +941,66 @@ namespace ticketing_application
 
                                                 //calculate total amount to be paid
                                             calculateTotalPayment:
+                                                Console.ResetColor();
                                                 Console.Clear();
+                                                #region Create Window Form
+                                                column = defaultColumn; row = defaultRow;
+                                                for (int i = 0; i < height; i++)
+                                                {
+                                                    Console.SetCursorPosition(column, (row)++);
+                                                    for (int x = 0; x < width; x++)
+                                                    {
+                                                        if (i <= headerHeight)
+                                                        {
+                                                            // creating the header design
+                                                            Console.BackgroundColor = headerColor;
+                                                            Console.Write(" ");
+                                                        }
+                                                        else
+                                                        {
+                                                            Console.BackgroundColor = backGroundColor;
+                                                            Console.Write(" ");
+                                                        }
+
+                                                    }
+                                                    Console.WriteLine();
+                                                }
+                                                column = defaultColumn; row = defaultRow;
+                                                Console.ForegroundColor = ConsoleColor.White;
+                                                Console.BackgroundColor = headerColor;
+                                                Console.SetCursorPosition((column) + 2, (row) + 1);
+                                                Console.WriteLine("Payment Transaction");
+                                                Console.ForegroundColor = foreGroundColor;
+                                                Console.BackgroundColor = backGroundColor;
+                                                column += 2; row += 4;
+                                                #endregion
+                                                Console.SetCursorPosition((column), (row) + 1);
                                                 Console.WriteLine("Price: P{0}", accomodationPrice[accomodationChoice - 1]);
                                                 double discount = accomodationPrice[accomodationChoice - 1] * typeOfPassengerDiscounts[typeOfPassengerChoice - 1];
+                                                Console.SetCursorPosition((column), (row) + 2);
                                                 Console.WriteLine("Discount: P{0}", discount);
                                                 totalPayment = accomodationPrice[accomodationChoice - 1] - discount;
+                                                Console.SetCursorPosition((column), (row) + 3);
                                                 Console.WriteLine("Total Payment: P{0}", totalPayment);
 
+                                                Console.SetCursorPosition((column), (row) + 5);
                                                 Console.Write("Enter your payment: ");
                                                 payment = double.Parse(Console.ReadLine());
                                                 if (payment >= totalPayment)
                                                 {
                                                     change = payment - totalPayment;
                                                 }
-                                                else {
+                                                else
+                                                {
+                                                    Console.SetCursorPosition((column), (row) + 7);
                                                     Console.WriteLine("You've entered an invalid payment");
+                                                    Console.SetCursorPosition((column), (row) + 8);
                                                     Console.Write("Would you like to enter payment? (Y/N): ");
                                                     retryChoice = Console.ReadLine()[0];
                                                     if (retryChoice == 'Y' || retryChoice == 'y')
                                                     {
+                                                        column = defaultColumn; row = defaultRow;
+                                                        Console.ResetColor();
                                                         goto calculateTotalPayment;
                                                     }
                                                     else
@@ -969,9 +1010,13 @@ namespace ticketing_application
                                                 }
 
                                                 // Confirm payment and transaction
+                                                Console.SetCursorPosition((column), (row) + 9);
                                                 Console.WriteLine("Total Payment (Discount included if applicable): P{0}", totalPayment);
+                                                Console.SetCursorPosition((column), (row) + 10);
                                                 Console.WriteLine("Your Payment: P{0}", payment);
+                                                Console.SetCursorPosition((column), (row) + 11);
                                                 Console.WriteLine("Change: P{0}", change);
+                                                Console.SetCursorPosition((column), (row) + 12);
                                                 Console.Write("\nConfirm Transaction? (Y/N): ");
                                                 retryChoice = Console.ReadLine()[0];
                                                 if(retryChoice == 'Y' || retryChoice == 'y')
@@ -985,9 +1030,12 @@ namespace ticketing_application
                                                         {
                                                             if (item == transactionData)
                                                             {
-                                                                Console.WriteLine("\nDuplicate Transaction Entery Error");
+                                                                Console.SetCursorPosition((column), (row) + 14);
+                                                                Console.WriteLine("Duplicate Transaction Entery Error");
+                                                                Console.SetCursorPosition((column), (row) + 15);
                                                                 Console.WriteLine("We will have to ask you re-enter all your trasaction information");
-                                                                Console.WriteLine("\nRe-enter Transaction? (Y/N)");
+                                                                Console.SetCursorPosition((column), (row) + 16);
+                                                                Console.WriteLine("Re-enter Transaction? (Y/N)");
                                                                 retryChoice = Console.ReadLine()[0];
                                                                 if (retryChoice == 'Y' || retryChoice == 'y')
                                                                 {
@@ -1025,6 +1073,7 @@ namespace ticketing_application
 
                                                 // Display receipt
                                                 displayReceipt:
+                                                    Console.ResetColor();
                                                     Console.Clear();
                                                     Console.WriteLine("ROBLE SHIPPING Inc.");
                                                     Console.WriteLine("ES Baclig Avenue T Padilla Ext");
