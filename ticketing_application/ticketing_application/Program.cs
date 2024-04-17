@@ -12,7 +12,7 @@ namespace ticketing_application
         {
             Random _random = new Random();
             DateTime _dateTime = DateTime.Now;
-            string username = "1", password = "1",
+            string username = "", password = "",
                 // these variables are used in the input passenger record 
                 fullName = "", address = "",
                 // this will hold all the tranction data before it will be confirm and store to -> transactions array
@@ -37,8 +37,11 @@ namespace ticketing_application
                  * */
                 destinationChoice = 0, travelTimeChoice = 0, accomodationChoice = 0, deckNumberChoice = 0,
                 // this variable is used in the input passenger record
-                age = 0, typeOfPassengerChoice = 0, genderChoice = 0;
-            
+                age = 0, typeOfPassengerChoice = 0, genderChoice = 0,
+                // these are used for the windor form settings
+                width=90, height = 20, column = 13, row = 5, headerHeight = 2 , defaultColumn = 13, defaultRow = 5;
+            // these are used for the color setings of the windows form
+            ConsoleColor foreGroundColor = ConsoleColor.Magenta, backGroundColor = ConsoleColor.Gray, headerColor = foreGroundColor, errorHeaderColor= ConsoleColor.Red, warningHeaderColor = ConsoleColor.DarkYellow;
             /*
              * arrays & variables are used in the ticketing transaction feature of the applications
              * these are displayed using for loops during the showcasing of user choices per transactions
@@ -122,20 +125,59 @@ namespace ticketing_application
                 {
                 // start of the application
                 startOfApplication:
+                    #region start of Application
                     Console.Clear();
+                    //creating the window form
+                    for (int i = 0; i < height; i++)
+                    {
+                        Console.SetCursorPosition(column, (row)++);
+                        for (int x = 0; x < width; x++)
+                        {
+                            if (i <= headerHeight)
+                            {
+                                // creating the header design
+                                Console.BackgroundColor = headerColor;
+                                Console.Write(" ");
+                            }
+                            else {
+                                Console.BackgroundColor = backGroundColor;
+                                Console.Write(" ");
+                            }
+                           
+                        }
+                        Console.WriteLine();
+                    }
+                    column = defaultColumn; row = defaultRow;
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.BackgroundColor = headerColor;
+                    Console.SetCursorPosition((column) + 2, (row) + 1);
+                    Console.WriteLine("Welcome");
+
+                    Console.ForegroundColor = foreGroundColor;
+                    Console.BackgroundColor = backGroundColor;
+                    Console.SetCursorPosition((column) + 2, (row) + 4);
                     Console.WriteLine("[1] Login");
+                    Console.SetCursorPosition((column) + 2, (row) + 5);
                     Console.WriteLine("[2] Register");
+                    Console.SetCursorPosition((column) + 2, (row) + 6);
                     Console.Write("Enter choice: ");
                     optionChoice = int.Parse(Console.ReadLine());
-
+                    Console.ResetColor();
+                    #endregion
                     switch (optionChoice)
                     {
+                       #region login
                         case 1:
                             if (username.Length <= 0 && password.Length <= 0)
                             {
+                                Console.ForegroundColor = foreGroundColor;
+                                Console.BackgroundColor = backGroundColor;
+                                Console.SetCursorPosition((column) + 2, (row) + 8);
                                 Console.WriteLine("No user authentication entered");
+                                Console.SetCursorPosition((column) + 2, (row) + 9);
                                 Console.Write("Return to Home Page? (Y/N): ");
                                 retryChoice = Console.ReadLine()[0];
+                                Console.ResetColor();
                                 if (retryChoice == 'Y' || retryChoice == 'y')
                                 {
                                     goto startOfApplication;
@@ -150,15 +192,53 @@ namespace ticketing_application
                             // user access authentication process
                             userLogin:
                                 Console.Clear();
+                                //creating the window form
+                                for (int i = 0; i < height; i++)
+                                {
+                                    Console.SetCursorPosition(column, (row)++);
+                                    for (int x = 0; x < width; x++)
+                                    {
+                                        if (i <= headerHeight)
+                                        {
+                                            // creating the header design
+                                            Console.BackgroundColor = headerColor;
+                                            Console.Write(" ");
+                                        }
+                                        else
+                                        {
+                                            Console.BackgroundColor = backGroundColor;
+                                            Console.Write(" ");
+                                        }
+
+                                    }
+                                    Console.WriteLine();
+                                }
+                                column = defaultColumn; row = defaultRow;
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.BackgroundColor = headerColor;
+                                Console.SetCursorPosition((column) + 2, (row) + 1);
+                                Console.WriteLine("Login Page");
+
+                                Console.ForegroundColor = foreGroundColor;
+                                Console.BackgroundColor = backGroundColor;
+                                Console.SetCursorPosition((column) + 2, (row) + 4);
                                 Console.Write("Enter username: ");
                                 string loginUsername = Console.ReadLine();
+                                Console.SetCursorPosition((column) + 2, (row) + 5);
                                 Console.Write("Enter password: ");
                                 string loginPassword = Console.ReadLine();
+                                Console.ResetColor();
                                 if (loginUsername != username || loginPassword != password)
                                 {
+
+                                    Console.ForegroundColor = foreGroundColor;
+                                    Console.BackgroundColor = backGroundColor;
+                                    Console.SetCursorPosition((column) + 2, (row) + 7);
                                     Console.WriteLine("Invalid username or password");
+                                    Console.SetCursorPosition((column) + 2, (row) + 8);
                                     Console.Write("Return to login Page? (Y/N): ");
                                     retryChoice = Console.ReadLine()[0];
+                                    Console.ResetColor();
                                     if (retryChoice == 'Y' || retryChoice == 'y')
                                     {
                                         goto userLogin;
@@ -173,24 +253,61 @@ namespace ticketing_application
                                 // select transaction option
                                 transactionOptions:
                                     Console.Clear();
-                                    Console.WriteLine("Transaction Options");
-                                    Console.WriteLine("[1] Ticketing Transactions");
-                                    Console.WriteLine("[2] View / Input Passengers Record");
-                                    Console.WriteLine("[3] View / Search Trip Information");
-                                    Console.WriteLine("[4] View a Search Trip Info");
-                                    Console.WriteLine("[5] Return to Start of Application");
+                                    //creating the window form
+                                    for (int i = 0; i < height; i++)
+                                    {
+                                        Console.SetCursorPosition(column, (row)++);
+                                        for (int x = 0; x < width; x++)
+                                        {
+                                            if (i <= headerHeight)
+                                            {
+                                                // creating the header design
+                                                Console.BackgroundColor = headerColor;
+                                                Console.Write(" ");
+                                            }
+                                            else
+                                            {
+                                                Console.BackgroundColor = backGroundColor;
+                                                Console.Write(" ");
+                                            }
 
+                                        }
+                                        Console.WriteLine();
+                                    }
+                                    column = defaultColumn; row = defaultRow;
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    Console.BackgroundColor = headerColor;
+                                    Console.SetCursorPosition((column) + 2, (row) + 1);
+                                    Console.WriteLine("Transaction Options");
+
+                                    Console.ForegroundColor = foreGroundColor;
+                                    Console.BackgroundColor = backGroundColor;
+                                    Console.SetCursorPosition((column) + 2, (row) + 4);
+                                    Console.WriteLine("[1] Ticketing Transactions");
+                                    Console.SetCursorPosition((column) + 2, (row) + 5);
+                                    Console.WriteLine("[2] View / Input Passengers Record");
+                                    Console.SetCursorPosition((column) + 2, (row) + 6);
+                                    Console.WriteLine("[3] View / Search Trip Information");
+                                    Console.SetCursorPosition((column) + 2, (row) + 7);
+                                    Console.WriteLine("[4] View a Search Trip Info");
+                                    Console.SetCursorPosition((column) + 2, (row) + 8);
+                                    Console.WriteLine("[5] Return to Start of Application");
+                                    
+                                    Console.SetCursorPosition((column) + 2, (row) + 10);
                                     Console.Write("Enter choice: ");
                                     optionChoice = int.Parse(Console.ReadLine());
-
+                                    Console.ResetColor();
                                     switch (optionChoice)
                                     {
                                         case 1:
                                             if (hasNotSavedTicketingInformation == true) 
                                             {
+                                                Console.SetCursorPosition((column) + 2, (row) + 10);
                                                 Console.WriteLine("\nThis action will overwrite the previously entered selction");
+                                                Console.SetCursorPosition((column) + 2, (row) + 11);
                                                 Console.Write("Would you like to proceed? (Y/N): ");
                                                 retryChoice = Console.ReadLine()[0];
+                                                Console.ResetColor();
                                                 if (retryChoice == 'N' || retryChoice == 'n')
                                                 {
                                                     goto transactionOptions;
@@ -198,15 +315,45 @@ namespace ticketing_application
                                             }
                                             // select a distination
                                             Console.Clear();
+                                            //creating the window form
+                                            for (int i = 0; i < height; i++)
+                                            {
+                                                Console.SetCursorPosition(column, (row)++);
+                                                for (int x = 0; x < width; x++)
+                                                {
+                                                    if (i <= headerHeight)
+                                                    {
+                                                        // creating the header design
+                                                        Console.BackgroundColor = headerColor;
+                                                        Console.Write(" ");
+                                                    }
+                                                    else
+                                                    {
+                                                        Console.BackgroundColor = backGroundColor;
+                                                        Console.Write(" ");
+                                                    }
+
+                                                }
+                                                Console.WriteLine();
+                                            }
+                                            column = defaultColumn; row = defaultRow;
+                                            Console.ForegroundColor = ConsoleColor.White;
+                                            Console.BackgroundColor = headerColor;
+                                            Console.SetCursorPosition((column) + 2, (row) + 1);
                                             Console.WriteLine("TICKETING TRANSACTIONS");
+                                            Console.ForegroundColor = foreGroundColor;
+                                            Console.BackgroundColor = backGroundColor;
+                                            column += 2; row += 4;
                                             for (int i = 0; i < destinations.Length; i++)
                                             {
                                                 // Display the destination available
+                                                Console.SetCursorPosition(column, row ++);
                                                 Console.WriteLine("[{0}] - {1}", (i + 1), destinations[i]);
                                             }
+                                            Console.SetCursorPosition(column, row + 1);
                                             Console.Write("Enter choice: ");
                                             destinationChoice = int.Parse(Console.ReadLine());
-                                            
+                                            Console.ResetColor();
                                             // select a travel time
                                     selectTravelTime:
                                             Console.Clear();
@@ -695,19 +842,53 @@ namespace ticketing_application
 
                             }
                             break;
+                    #endregion
+                       #region registerPage
                         case 2:
                         // register user authentication
                         registerUserAuthentication:
                             Console.Clear();
+                            //creating the window form
+                            for (int i = 0; i < height; i++)
+                            {
+                                Console.SetCursorPosition(column, (row)++);
+                                for (int x = 0; x < width; x++)
+                                {
+                                    if (i <= headerHeight)
+                                    {
+                                        // creating the header design
+                                        Console.BackgroundColor = headerColor;
+                                        Console.Write(" ");
+                                    }
+                                    else
+                                    {
+                                        Console.BackgroundColor = backGroundColor;
+                                        Console.Write(" ");
+                                    }
+
+                                }
+                                Console.WriteLine();
+                            }
+                            column = defaultColumn; row = defaultRow;
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.BackgroundColor = headerColor;
+                            Console.SetCursorPosition((column) + 2, (row) + 1);
+                            Console.WriteLine("Register Page");
+
+                            Console.BackgroundColor = backGroundColor;
+                            Console.ForegroundColor = foreGroundColor;
+                            Console.SetCursorPosition((column) + 2, (row) + 4);
                             Console.Write("Enter new username: ");
                             string newUsername = Console.ReadLine();
                             if (newUsername.Length > 0)
                             {
                                 username = newUsername;
+                                Console.SetCursorPosition((column) + 2, (row) + 5);
                                 Console.Write("Enter new password: ");
                                 string newPassword = Console.ReadLine();
                                 if (newPassword.Length > 0)
                                 {
+                                    Console.ResetColor();
                                     password = newPassword;
                                     goto startOfApplication;
                                 }
@@ -715,11 +896,14 @@ namespace ticketing_application
                             else
                             {
                                 // invalid input 
+                                Console.SetCursorPosition((column) + 2, (row) + 6);
                                 Console.WriteLine("Invalid Input!");
+                                Console.SetCursorPosition((column) + 2, (row) + 7);
                                 Console.Write("Return to Home Page? (Y/N): ");
                                 retryChoice = Console.ReadLine()[0];
                                 if (retryChoice == 'Y' || retryChoice == 'y')
                                 {
+                                    Console.ResetColor();
                                     goto startOfApplication;
                                 }
                                 else
@@ -728,9 +912,14 @@ namespace ticketing_application
                                 }
                             }
                             break;
+                       #endregion
                         default:
                             // invalid input
+                            Console.ForegroundColor = foreGroundColor;
+                            Console.BackgroundColor = backGroundColor;
+                            Console.SetCursorPosition((column) + 2, (row) + 8);
                             Console.WriteLine("Invalid Input!");
+                            Console.SetCursorPosition((column) + 2, (row) + 9);
                             Console.Write("Return to Home Page? (Y/N): ");
                             retryChoice = Console.ReadLine()[0];
                             if (retryChoice == 'Y' || retryChoice == 'y')
@@ -743,14 +932,49 @@ namespace ticketing_application
                             }
                             break;
                     }
+                    Console.ResetColor();
                 }
                 catch (Exception ex)
                 {
-                    // invalid input
                     Console.Clear();
+                    Console.ResetColor();
+                    Console.BackgroundColor = ConsoleColor.Black;
+
+                    //creating the window form
+                    for (int i = 0; i < height; i++)
+                    {
+                        Console.SetCursorPosition(column, (row)++);
+                        for (int x = 0; x < width; x++)
+                        {
+                            if (i <= headerHeight)
+                            {
+                                // creating the header design
+                                Console.BackgroundColor = errorHeaderColor;
+                                Console.Write(" ");
+                            }
+                            else
+                            {
+                                Console.BackgroundColor = backGroundColor;
+                                Console.Write(" ");
+                            }
+
+                        }
+                        Console.WriteLine();
+                    }
+                    column = defaultColumn; row = defaultRow;
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.BackgroundColor = errorHeaderColor;
+                    Console.SetCursorPosition((column) + 2, (row) + 1);
+                    Console.WriteLine("Error");
+                    // invalid input
+                    Console.ForegroundColor = foreGroundColor;
+                    Console.BackgroundColor = backGroundColor;
+                    Console.SetCursorPosition((column) + 2, (row) + 5);
                     Console.WriteLine("An unexpeted error occured.." + ex.Message);
+                    Console.SetCursorPosition((column) + 2, (row) + 6);
                     Console.Write("Restart Application? (Y/N): ");
                     retryChoice = Console.ReadLine()[0];
+                    Console.ResetColor();
                     if (retryChoice == 'Y' || retryChoice == 'y')
                     {
                         continue;
