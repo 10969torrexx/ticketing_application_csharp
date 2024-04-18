@@ -1294,58 +1294,69 @@ namespace ticketing_application
                                                 Console.SetCursorPosition((column), row++);
                                                 Console.WriteLine("Enter Ticket #: ");
                                                 string searchTicketNumber = Console.ReadLine();
-
+                                                column = defaultColumn; row = defaultRow;
                                                 // search for the transaction based on the ticket number
+                                                Console.ResetColor();
+                                                Console.Clear();
+                                                #region Create Window Form
+                                                column = defaultColumn; row = defaultRow;
+                                                for (int i = 0; i < height; i++)
+                                                {
+                                                    Console.SetCursorPosition(column, (row)++);
+                                                    for (int x = 0; x < width; x++)
+                                                    {
+                                                        if (i <= headerHeight)
+                                                        {
+                                                            // creating the header design
+                                                            Console.BackgroundColor = headerColor;
+                                                            Console.Write(" ");
+                                                        }
+                                                        else
+                                                        {
+                                                            Console.BackgroundColor = backGroundColor;
+                                                            Console.Write(" ");
+                                                        }
+
+                                                    }
+                                                    Console.WriteLine();
+                                                }
+                                                column = defaultColumn; row = defaultRow;
+                                                Console.ForegroundColor = ConsoleColor.White;
+                                                Console.BackgroundColor = headerColor;
+                                                Console.SetCursorPosition((column) + 2, row += 1);
+                                                Console.WriteLine("Search Passenger using Ticket #!");
+                                                Console.ForegroundColor = headerColor;
+                                                Console.BackgroundColor = backGroundColor;
+                                                column += 2; row += 3;
+                                                #endregion
                                                 for (int i = 0; i < transactionSize - 1; i++)
                                                 {
                                                     if (ticketNumbers[i] == searchTicketNumber)
                                                     {
-                                                        Console.ResetColor();
-                                                        Console.Clear();
-                                                        #region Create Window Form
-                                                        column = defaultColumn; row = defaultRow;
-                                                        for (int i = 0; i < height; i++)
-                                                        {
-                                                            Console.SetCursorPosition(column, (row)++);
-                                                            for (int x = 0; x < width; x++)
-                                                            {
-                                                                if (i <= headerHeight)
-                                                                {
-                                                                    // creating the header design
-                                                                    Console.BackgroundColor = headerColor;
-                                                                    Console.Write(" ");
-                                                                }
-                                                                else
-                                                                {
-                                                                    Console.BackgroundColor = backGroundColor;
-                                                                    Console.Write(" ");
-                                                                }
-
-                                                            }
-                                                            Console.WriteLine();
-                                                        }
-                                                        column = defaultColumn; row = defaultRow;
-                                                        Console.ForegroundColor = ConsoleColor.White;
-                                                        Console.BackgroundColor = headerColor;
-                                                        Console.SetCursorPosition((column) + 2, row += 1);
-                                                        Console.WriteLine("Search Result");
-                                                        Console.ForegroundColor = headerColor;
-                                                        Console.BackgroundColor = backGroundColor;
-                                                        column += 2; row += 3;
-                                                        #endregion
+                                                        Console.SetCursorPosition((column), row++);
                                                         Console.WriteLine("Ticket #: {0}", transactions[i, 0].ToUpper());
+                                                        Console.SetCursorPosition((column), row++);
                                                         Console.WriteLine("Fullname {0}", transactions[i, 1].ToUpper());
+                                                        Console.SetCursorPosition((column), row++);
                                                         Console.WriteLine("Destination {0}", transactions[i, 2].ToUpper());
+                                                        Console.SetCursorPosition((column), row++);
                                                         Console.WriteLine("Travel Time {0}", transactions[i, 3].ToUpper());
+                                                        Console.SetCursorPosition((column), row++);
                                                         Console.WriteLine("Date of Travel {0}", transactions[i, 4].ToUpper());
+                                                        Console.SetCursorPosition((column), row++);
                                                         Console.WriteLine("Accomodation {0}", transactions[i, 5].ToUpper());
+                                                        Console.SetCursorPosition((column), row++);
                                                         Console.WriteLine("Deck #: {0}", transactions[i, 6].ToUpper());
                                                         noTicketNumberFound = true;
 
+                                                        row++;
+                                                        Console.SetCursorPosition((column), row++);
                                                         Console.WriteLine("Find another transaction? (Y/N): ");
                                                         retryChoice = char.Parse(Console.ReadLine());
                                                         if (retryChoice == 'Y' || retryChoice == 'y')
                                                         {
+                                                            Console.ResetColor();
+                                                            column = defaultColumn; row = defaultRow;
                                                             goto viewSearchTripInformation;
                                                         }
                                                         else
@@ -1360,7 +1371,7 @@ namespace ticketing_application
 
                                                 if (!noTicketNumberFound)
                                                 {
-                                                    Console.WriteLine("\nNo search result(s) found");
+                                                    Console.WriteLine("No search result(s) found");
                                                     Console.WriteLine("Try again? (Y/N): ");
                                                     retryChoice = char.Parse(Console.ReadLine());
                                                     if (retryChoice == 'Y' || retryChoice == 'y')
