@@ -30,7 +30,7 @@ namespace ticketing_application
                 hasNotSavedTicketingInformation = false,
                 // this is used to flag if user has already sucessfully entered passenger record
                 hasPassengerRecord = false;
-            int retryChoice, optionChoice, 
+            int optionChoice, 
                 /**
                  * these choices variable are used during the ticketing transaction feature,
                  * it stores the selected options made by the user
@@ -42,6 +42,7 @@ namespace ticketing_application
                 width=90, height = 20, column = 13, row = 5, headerHeight = 2 , defaultColumn = 13, defaultRow = 5;
             // these are used for the color setings of the windows form
             ConsoleColor foreGroundColor = ConsoleColor.Magenta, backGroundColor = ConsoleColor.Gray, headerColor = foreGroundColor, errorHeaderColor= ConsoleColor.DarkRed, warningHeaderColor = ConsoleColor.DarkYellow;
+            char retryChoice = 'x';
             /*
              * arrays & variables are used in the ticketing transaction feature of the applications
              * these are displayed using for loops during the showcasing of user choices per transactions
@@ -184,7 +185,7 @@ namespace ticketing_application
                                 Console.WriteLine("No user authentication entered");
                                 Console.SetCursorPosition((column) + 2, (row) + 9);
                                 Console.Write("Return to Home Page? (Y/N): ");
-                                retryChoice = Console.ReadLine()[0];
+                                retryChoice = char.Parse(Console.ReadLine());
                                 Console.ResetColor();
                                 if (retryChoice == 'Y' || retryChoice == 'y')
                                 {
@@ -245,7 +246,7 @@ namespace ticketing_application
                                     Console.WriteLine("Invalid username or password");
                                     Console.SetCursorPosition((column) + 2, (row) + 8);
                                     Console.Write("Return to login Page? (Y/N): ");
-                                    retryChoice = Console.ReadLine()[0];
+                                    retryChoice = char.Parse(Console.ReadLine());
                                     Console.ResetColor();
                                     if (retryChoice == 'Y' || retryChoice == 'y')
                                     {
@@ -314,7 +315,7 @@ namespace ticketing_application
                                                 Console.WriteLine("\nThis action will overwrite the previously entered selction");
                                                 Console.SetCursorPosition((column) + 2, (row) + 11);
                                                 Console.Write("Would you like to proceed? (Y/N): ");
-                                                retryChoice = Console.ReadLine()[0];
+                                                retryChoice = char.Parse(Console.ReadLine());
                                                 Console.ResetColor();
                                                 if (retryChoice == 'N' || retryChoice == 'n')
                                                 {
@@ -631,7 +632,7 @@ namespace ticketing_application
                                             Console.WriteLine("Deck Number: {0}", deckNumberChoice );
                                             Console.SetCursorPosition((column), row + 8);
                                             Console.Write("Would you like to proceed? (Y/N): ");
-                                            retryChoice = Console.ReadLine()[0];
+                                            retryChoice = char.Parse(Console.ReadLine());
                                             if (retryChoice == 'Y' || retryChoice == 'y')
                                             {
                                                 hasTicketingInformation = true;
@@ -687,7 +688,7 @@ namespace ticketing_application
                                                 Console.WriteLine("You haven't selected any of the ticketing transaction!");
                                                 Console.SetCursorPosition((column), row + 2);
                                                 Console.Write("Would you like to proceed? (Y/N): ");
-                                                retryChoice = Console.ReadLine()[0];
+                                                retryChoice = char.Parse(Console.ReadLine());
                                                 if (retryChoice == 'Y' || retryChoice == 'y')
                                                 {
                                                     Console.ResetColor();
@@ -894,7 +895,7 @@ namespace ticketing_application
                                                             Console.WriteLine("You've entered an invalid age");
                                                             Console.SetCursorPosition((column), (row) + 3);
                                                             Console.Write("Would you like to proceed? (Y/N): ");
-                                                            retryChoice = Console.ReadLine()[0];
+                                                            retryChoice = char.Parse(Console.ReadLine());
                                                             if (retryChoice == 'Y' || retryChoice == 'y')
                                                             {
                                                                 column = defaultRow; row = defaultRow;
@@ -914,7 +915,7 @@ namespace ticketing_application
                                                             Console.WriteLine("You've entered an invalid age");
                                                             Console.SetCursorPosition((column), (row) + 3);
                                                             Console.Write("Would you like to proceed? (Y/N): ");
-                                                            retryChoice = Console.ReadLine()[0];
+                                                            retryChoice = char.Parse(Console.ReadLine());
                                                             if (retryChoice == 'Y' || retryChoice == 'y')
                                                             {
                                                                 column = defaultRow; row = defaultRow;
@@ -933,7 +934,7 @@ namespace ticketing_application
                                                     Console.WriteLine("You've entered an invalid age");
                                                     Console.SetCursorPosition((column), (row) + 3);
                                                     Console.Write("Would you like to proceed? (Y/N): ");
-                                                    retryChoice = Console.ReadLine()[0];
+                                                    retryChoice = char.Parse(Console.ReadLine());
                                                     if (retryChoice == 'Y' || retryChoice == 'y')
                                                     {
                                                         column = defaultRow; row = defaultRow;
@@ -1004,7 +1005,7 @@ namespace ticketing_application
                                                     Console.WriteLine("You've entered an invalid payment");
                                                     Console.SetCursorPosition((column), row++);
                                                     Console.Write("Would you like to enter payment? (Y/N): ");
-                                                    retryChoice = Console.ReadLine()[0];
+                                                    retryChoice = char.Parse(Console.ReadLine());
                                                     if (retryChoice == 'Y' || retryChoice == 'y')
                                                     {
                                                         column = defaultColumn; row = defaultRow;
@@ -1027,7 +1028,7 @@ namespace ticketing_application
                                                 Console.WriteLine("Change: P{0}", change);
                                                 Console.SetCursorPosition((column), row++);
                                                 Console.Write("Confirm Transaction? (Y/N): ");
-                                                retryChoice = Console.ReadLine()[0];
+                                                retryChoice = char.Parse(Console.ReadLine());
                                                 if(retryChoice == 'Y' || retryChoice == 'y')
                                                 {
                                                     // generate ticket number
@@ -1084,7 +1085,7 @@ namespace ticketing_application
                                                                 Console.WriteLine("We will have to ask you re-enter all your trasaction information");
                                                                 Console.SetCursorPosition((column), row++);
                                                                 Console.Write("Re-enter Transaction? (Y/N)");
-                                                                retryChoice = Console.ReadLine()[0];
+                                                                retryChoice = char.Parse(Console.ReadLine());
                                                                 if (retryChoice == 'Y' || retryChoice == 'y')
                                                                 {
                                                                     goto transactionOptions;
@@ -1230,7 +1231,7 @@ namespace ticketing_application
                                                 Console.WriteLine("You haven't selected any of the ticketing transaction!");
                                                 Console.SetCursorPosition((column), row++);
                                                 Console.Write("Would you like to proceed? (Y/N): ");
-                                                retryChoice = Console.ReadLine()[0];
+                                                retryChoice = char.Parse(Console.ReadLine());
                                                 if (retryChoice == 'Y' || retryChoice == 'y')
                                                 {
                                                     column = defaultColumn; row = defaultRow;
@@ -1279,9 +1280,8 @@ namespace ticketing_application
                                                 Console.BackgroundColor = backGroundColor;
                                                 column += 2; row += 3;
                                                 #endregion
-                                                for (int i = 0; i < ticketNumberSize; i++)
+                                                for (int i = 0; i < transactionSize; i++)
                                                 {
-                                                    Console.SetCursorPosition((column) + 2, row += 1);
                                                     Console.WriteLine("Ticket #: {0}", transactions[i, 0].ToUpper());
                                                     Console.WriteLine("Fullname {0}", transactions[i, 1].ToUpper());
                                                     Console.WriteLine("Destination {0}", transactions[i, 2].ToUpper());
@@ -1309,7 +1309,7 @@ namespace ticketing_application
                                                         noTicketNumberFound = true;
 
                                                         Console.WriteLine("\nFind another transaction? (Y/N): ");
-                                                        retryChoice = Console.ReadLine()[0];
+                                                        retryChoice = char.Parse(Console.ReadLine());
                                                         if (retryChoice == 'Y' || retryChoice == 'y')
                                                         {
                                                             goto viewSearchTripInformation;
@@ -1328,7 +1328,7 @@ namespace ticketing_application
                                                 {
                                                     Console.WriteLine("\nNo search result(s) found");
                                                     Console.WriteLine("Try again? (Y/N): ");
-                                                    retryChoice = Console.ReadLine()[0];
+                                                    retryChoice = char.Parse(Console.ReadLine());
                                                     if (retryChoice == 'Y' || retryChoice == 'y')
                                                     {
                                                         goto viewSearchTripInformation;
@@ -1379,7 +1379,7 @@ namespace ticketing_application
                                                 Console.WriteLine("You haven't selected any of the ticketing transaction!");
                                                 Console.SetCursorPosition((column), row++);
                                                 Console.Write("Would you like to proceed? (Y/N): ");
-                                                retryChoice = Console.ReadLine()[0];
+                                                retryChoice = char.Parse(Console.ReadLine());
                                                 if (retryChoice == 'Y' || retryChoice == 'y')
                                                 {
                                                     column = defaultColumn; row = defaultRow;
@@ -1433,7 +1433,7 @@ namespace ticketing_application
                                                 }
 
                                                 Console.Write("\nTry again? (Y/N): ");
-                                                retryChoice = Console.ReadLine()[0];
+                                                retryChoice = char.Parse(Console.ReadLine());
                                                 if (retryChoice == 'Y' || retryChoice == 'y')
                                                 {
                                                     goto searchByDate;
@@ -1513,7 +1513,7 @@ namespace ticketing_application
                                 Console.WriteLine("Invalid Input!");
                                 Console.SetCursorPosition((column) + 2, (row) + 7);
                                 Console.Write("Return to Home Page? (Y/N): ");
-                                retryChoice = Console.ReadLine()[0];
+                                retryChoice = char.Parse(Console.ReadLine());
                                 if (retryChoice == 'Y' || retryChoice == 'y')
                                 {
                                     Console.ResetColor();
@@ -1534,7 +1534,7 @@ namespace ticketing_application
                             Console.WriteLine("Invalid Input!");
                             Console.SetCursorPosition((column) + 2, (row) + 9);
                             Console.Write("Return to Home Page? (Y/N): ");
-                            retryChoice = Console.ReadLine()[0];
+                            retryChoice = char.Parse(Console.ReadLine());
                             if (retryChoice == 'Y' || retryChoice == 'y')
                             {
                                 goto startOfApplication;
@@ -1585,13 +1585,15 @@ namespace ticketing_application
                     Console.SetCursorPosition((column) + 2, row++);
                     Console.WriteLine("An unexpeted error occured.." + ex.Message);
                     Console.SetCursorPosition((column) + 2, row++);
-                    Console.WriteLine(ex.StackTrace);
+                   // Console.WriteLine(ex.StackTrace);
                     Console.SetCursorPosition((column) + 2, row++);
                     Console.Write("Restart Application? (Y/N): ");
-                    retryChoice = Console.ReadLine()[0];
+                    retryChoice = char.Parse(Console.ReadLine());
                     Console.ResetColor();
                     if (retryChoice == 'Y' || retryChoice == 'y')
                     {
+                        Console.ResetColor();
+                        column = defaultColumn; row = defaultRow;
                         continue;
                     }
                     else
